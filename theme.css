@@ -267,9 +267,7 @@ span.counter:not(.popover__block){
 .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom), .b3-menu__item--current{
     border-radius: 0px;
     background-color: var(--b3-theme-surface);
-    
 }
-
 .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__label, .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__accelerator, .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__icon, .b3-menu__item--current>.b3-menu__label, .b3-menu__item--current>.b3-menu__accelerator, .b3-menu__item--current>.b3-menu__icon{
     color: var(--b3-theme-on-background);
 }
@@ -278,7 +276,10 @@ span.counter:not(.popover__block){
 .b3-menu__submenu{
     background-color: var(--b3-theme-background) !important;
 }
-
+/* 菜单中文字描述 */
+.b3-menu__item--readonly{
+    line-height: 1.7em;
+}
 /* 弹出设置框，如超级链接设置 */
 .protyle-util{
     padding: 10px;
@@ -406,6 +407,7 @@ span.counter:not(.popover__block){
 .protyle-gutters{
     padding: 9px 0; /* 调整调整 padding 之后带来的块图标垂直位置偏移 */
 }
+
 
 /* 减淡块图标颜色 */
 .protyle-gutters svg {
@@ -683,6 +685,9 @@ strong[style]{
     margin: 4px;
     border-radius: 3px;
 }
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb,.protyle-wysiwyg [data-node-id].sb[data-sb-layout="row"] .sb{
+    margin:4px;
+}
 /****** 实验功能结束 */
 
 /* 段落 p */
@@ -729,7 +734,7 @@ strong[style]{
 /* 引述 */
 .b3-typography blockquote, .b3-typography .bq, .protyle-wysiwyg blockquote, .protyle-wysiwyg .bq {
     border-left: 3px solid var(--b3-theme-on-background);
-    background-color: var(--b3-theme-background);
+    background-color: transparent;
     #color: var(--b3-theme-on-surface);
     margin:1em 2em 1em 2em ; 
     padding: 0px 4px;
