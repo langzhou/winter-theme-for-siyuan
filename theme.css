@@ -163,8 +163,8 @@
 
 /******* 顶部工具栏 toolbar **********/
 .toolbar{
-    background-color: var(--b3-theme-surface);
-    border-bottom: var(--allen-column-border);
+    background-color:   var(--b3-theme-surface);
+    border-bottom:      var(--allen-column-border);
 }
 
 
