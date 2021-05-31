@@ -338,6 +338,7 @@ span.counter:not(.popover__block){
 .protyle-breadcrumb{
     background-color: var(--b3-theme-background);
     border-bottom: 0px solid var(--b3-border-color);
+    padding: 0px 8px;
 }
 .protyle-breadcrumb__bar{
     background-color: var(--b3-theme-background);
@@ -517,7 +518,7 @@ span.counter:not(.popover__block){
     font-weight: bold; /*文件名加粗*/
 }
 .block__popover .protyle-breadcrumb__item:first-child svg{
-    display: none;
+    /* display: none; */
 }
 /*调整右侧三点菜单样式*/
 .block__popover .protyle-breadcrumb .b3-tooltips{
