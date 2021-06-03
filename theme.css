@@ -1,4 +1,4 @@
-/******* Chocolate: Theme for SiYuan Note ************
+/******* Winter: Theme for SiYuan Note ************
 1. 本主题样式仅在16px字号设置下进行有限场景的测试，不能保证所有页面均完美呈现。如果遇到相关功能或样式问题，请重置为官方主题后再确认问题是否重现。
 2. 标注为「实验功能」的部分请谨慎开启使用。
 /************************/
@@ -174,13 +174,13 @@
 
 
 /* 说明：支持在全屏模式下自动隐藏顶栏，鼠标悬浮时展现。请将 min-height和 min-width 设置为自己电脑屏幕分辨率，如果不需要此功能请注释代码 */
-/******* 隐藏toolbar 代码开始 *********/
+/******* 隐藏toolbar 代码开始 *********
 @media only screen and (min-height: 900px) and (min-width: 1400px)
 {
     .toolbar{
         height: 0px;
         transition: height 400ms ease 0s;
-        margin-top: -1px; /* 消除下边框的影响 */
+        margin-top: -1px; 
     }
     .toolbar > div{
         visibility: hidden;
