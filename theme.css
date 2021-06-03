@@ -1,4 +1,4 @@
-/******* Winter: Theme for SiYuan Note ************
+/******* Chocolate: Theme for SiYuan Note ************
 1. 本主题样式仅在16px字号设置下进行有限场景的测试，不能保证所有页面均完美呈现。如果遇到相关功能或样式问题，请重置为官方主题后再确认问题是否重现。
 2. 标注为「实验功能」的部分请谨慎开启使用。
 /************************/
@@ -17,10 +17,9 @@
     /* 文字颜色 */
     --b3-theme-on-primary:    #FFFFFF;
     --b3-theme-on-secondary:  #FFFFFF;
-    --b3-theme-on-background: #37352f;
+    --b3-theme-on-background: #444444;
     --b3-theme-on-surface:    #666666;
     --b3-theme-on-error:      #FFFFFF;
-
 
     /* 字体 */
     --b3-font-family:  "Pingfang SC","Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -126,7 +125,7 @@
     --b3-protyle-code-background: rgba(27, 31, 35, .05);
 
     /* 所见即所得行内元素颜色 */
-    --b3-protyle-inline-strong-color: var(--b3-theme-on-background); /* 粗体 */
+    --b3-protyle-inline-strong-color: inherit; /* 粗体 */
     --b3-protyle-inline-em-color:  var(--b3-theme-on-background); /* 斜体 */
     --b3-protyle-inline-s-color: var(--b3-theme-on-background); /* 删除线 */
     --b3-protyle-inline-link-color: #008080; /* 超级链接 */
@@ -136,6 +135,8 @@
     --b3-protyle-inline-blockref-color: var(--b3-theme-primary); /* 双向链接文本 */
 
 /************* added by allen **********************************************************/
+    --allen-theme-panl: #333333; 
+    --allen-theme-on-panl: #888888;
 
     --allen-protyle-inline-code:#558eda; /* 行内代码颜色 */
     --allen-protyle-inline-code-background:rgba(208, 187, 193, 0.2); /* 行内代码背景色 */
@@ -157,13 +158,17 @@
     --allen-common-transition: all 400ms ease 0s;/*通用动画*/
 }
 
-
-
 /********** 一、框架&控件 *******************************************************/
+
+/* 设为 auto 之后可消除页签上方1像素的黑线，但也会带来反链浮窗列表高度的一些问题 */
+.fn__flex-1{
+    /* min-height: auto; */
+}
 
 /******* 顶部工具栏 toolbar **********/
 .toolbar{
-    background-color:   var(--b3-theme-surface);
+    /* background-color:   var(--allen-theme-panl); */
+    background-color: var(--b3-theme-surface);
     border-bottom:      var(--allen-column-border);
 }
 
@@ -173,8 +178,9 @@
 @media only screen and (min-height: 900px) and (min-width: 1400px)
 {
     .toolbar{
-        height: 8px;
+        height: 0px;
         transition: height 400ms ease 0s;
+        margin-top: -1px; /* 消除下边框的影响 */
     }
     .toolbar > div{
         visibility: hidden;
@@ -191,7 +197,9 @@
 
 
 /******* dock  **********/
+/* 左侧 dock */
 #dockLeft, #dockRight, #dockTop, #dockBottom{
+    /* background-color: var(--allen-theme-panl); */
     background-color: var(--b3-theme-surface);
 }
 #dockLeft{
@@ -206,32 +214,66 @@
 #dockBottom{
     border-top: var(--allen-column-border)
 }
-
+.toolbar__item, .dock__item{
+    color: var(--allen-theme-on-panl);
+    color: var(--b3-theme-on-surface);
+}
+.toolbar__item:hover, .dock__item--active, .dock__item:hover:not(.dock__item--active){
+    color: var(--b3-theme-on-surface);
+}
 /******** 边栏 column **********/
+/* .fn__flex-column {
+    background-color: var(--allen-theme-panl);
+    color: var(--allen-theme-on-panl);
+} */
+
+.layout-tab-container{
+    background-color: var(--allen-theme-panl);    
+    color: var(--allen-theme-on-panl);
+    background-color: var(--b3-theme-surface);
+    color: var(--b3-theme-on-surface);
+}
+.layout-tab-container .b3-typography{
+    color: var(--b3-theme-on-background);
+}
 /* 侧边栏收起动画 */
 #layouts > .fn__flex-1 > .fn__flex-column{
     transition: var(--allen-flex-column-transition);
 }
 /*  边栏分割线 */
 .layout__resize--lr:after{
-    background-color: var(--b3-theme-surface);
     transition: var(--allen-common-transition);
+    background-color: var(--b3-border-color);
+}
+.layout__resize:hover:after{
+    background-color: rgba(0,128,128,0.5);
+    /* box-shadow: 0 0 3px rgba(0,128,128,1); */
 }
 
 /* 边栏标题栏 */
 .block__icons{
+    background-color: var(--allen-theme-panl);
+    color: var(--allen-theme-on-panl);
+    background-color: var(--b3-theme-surface);
+    color: var(--b3-theme-on-surface);
+}
+.graph .block__icons{
     background-color: var(--b3-theme-surface);
 }
 /* 边栏列表项 */
-.b3-list-item__text{
+.b3-list-item, .b3-list-item__text{
+    color: var(--allen-theme-on-panl);
     color: var(--b3-theme-on-surface);
 }
+
 /* 边栏列表项图标 */
 .b3-list-item li svg{
-    color: var(--b3-theme-primary);
+    color: var(--allen-theme-on-panl);
+    color: var(--b3-theme-on-surface);
 }
 .b3-list-item__graphic{
-    #color: #666666;
+    color: var(--allen-theme-on-panl);
+    color: var(--b3-theme-on-surface);
 }
 .b3-list--background .b3-list-item--focus{
     #background-color: var(--b3-theme-primary-lightest) !important;
@@ -251,6 +293,10 @@ span.counter:not(.popover__block){
 /* 通用 */
 .b3-menu, .protyle-util{
     background-color: var(--b3-theme-background);
+}
+/* 设置面板 */
+.b3-dialog__container .b3-list-item{
+    color: var(--b3-theme-on-surface);
 }
 /* 右键菜单 */
 .b3-menu{
@@ -301,6 +347,9 @@ span.counter:not(.popover__block){
     border-radius: 2px;
 }
 
+.b3-text-filed[readonly]{
+    border: none;
+}
 
 /******** 文档编辑区 **********/
 
@@ -308,37 +357,83 @@ span.counter:not(.popover__block){
 .layout-tab-bar{
     background-color: var(--b3-theme-background);
     border-bottom: var(--allen-column-border);
+    padding: 0px 10px;
 }
+/* 页签项 */
+.layout-tab-bar .item{
+    border-radius: 40px;
+    margin: 6px 0px 4px 0px;
+    padding: 4px;
+    border-bottom: none;
+    background: transparent;
+}
+/* 激活的页签 */
+.layout__wnd--active .layout-tab-bar .item--focus .item__text{
+    /* font-weight: bold; */
+    color: var(--b3-theme-on-background);
+    border-color: transparent;
+    opacity: 1;
+}
+
 /*清除页签栏边框对侧边栏的影响*/
 .layout-tab-bar:empty{
     border-bottom: none;
 }
 /* 页签选中状态 */
-.layout-tab-bar .item{
-    background-color: transparent;
-    border-bottom: 2px solid transparent;
-}
 .layout-tab-bar .item--focus{
-    /* background-color: var(--b3-theme-surface); */
-    border-color: var(--b3-theme-primary);
+    background-color: transparent;
 }
 /* 页签标题 */
 .layout-tab-bar .item__text{
-    padding: 0 2px;
+    padding: 0 0 0 16px;
+    color: var(--b3-theme-on-background);
+    text-overflow:ellipsis;
+    opacity: 0.6;
 }
-/* 默认隐藏页签关闭按钮，悬浮时展现 */
+.layout-tab-bar .item__text::after{
+    background: transparent;
+}
 .layout-tab-bar .item__close{
     visibility: hidden;
+    margin-left: 4px;
 }
 .layout-tab-bar .item:hover .item__close{
     visibility: visible;
 }
+.layout-tab-bar .item:hover:not(.item--focus) .item__text::after{
+    background: transparent;
+}
+.layout-tab-bar .item--focus .item__text::after{
+    background: transparent;
+    background-color: #1295c9;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--b3-theme-background);
+    box-shadow: 0 0 1px 1px #1295c9;
+    top:8px;
+    left: 4px;
+}
+.layout-tab-bar .item--unupdate.item--focus .item__text::after{
+    background-color: #2ba81a;
+    border: 1px solid var(--b3-theme-background);
+    box-shadow: 0 0 1px 1px #2ba81a;
+}
+.layout-tab-bar .item--unupdate.item--focus{
+    color: var(--b3-theme-on-background) !important;
+}
+.layout-tab-bar .item--unupdate{
+    font-style: normal;
+}
+
+
 
 /***** 面包屑 *****/
 .protyle-breadcrumb{
     background-color: var(--b3-theme-background);
     border-bottom: 0px solid var(--b3-border-color);
-    padding: 0px 8px;
+    padding: 0 8px;
 }
 .protyle-breadcrumb__bar{
     background-color: var(--b3-theme-background);
@@ -372,6 +467,8 @@ span.counter:not(.popover__block){
 /* 设置编辑器光标颜色 */
 .protyle-wysiwyg{
      caret-color:var(--b3-theme-primary);
+     background-color: var(--b3-theme-background);
+     color: var(--b3-theme-on-background);
 }
 
 /* 光标选中文本样式 */
@@ -465,10 +562,12 @@ span.counter:not(.popover__block){
     width:12px;
     height:12px;
     margin:8px 0px 0px 1px;
-    color: var(--b3-tooltips-color);
     border: 2px solid transparent;
 }
-
+/* 设置彩色卡片内的原点颜色 */
+.protyle-wysiwyg [data-node-id][style] .protyle-action {
+    color:inherit !important;
+}
 /* 圆点悬浮时样式 */
 .protyle-wysiwyg [data-node-id].li>.protyle-action:hover svg{
     border-radius: 20px;
@@ -494,11 +593,15 @@ span.counter:not(.popover__block){
 /* 反链高亮颜色 */
 .backlinkList .b3-list-item__text mark{
     background-color: transparent;
-    color:var(--b3-theme-primary);
+    color:var(--b3-protyle-inline-mark-background);
 }
 
 /* 面板搜索图标 */
 .search__label .b3-form__icon-input{
+    background-color: var(--allen-theme-panl);
+    background-color: var(--b3-theme-surface);
+}
+.graph .search__label .b3-form__icon-input{
     background-color: var(--b3-theme-surface);
 }
 
@@ -508,11 +611,19 @@ span.counter:not(.popover__block){
 }
 
 /* 实验功能：优化反链浮窗面板的显示样式 */
+/* 浮窗标题栏 */
+.block__popover .block__icons{
+    background-color: var(--b3-theme-background);
+    /* color: var(--b3-theme-on-background); */
+}
+/*悬浮时显示完整面包屑 */
 .block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__item,.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__arrow{
-    visibility: visible; /*悬浮时显示完整面包屑*/
+    visibility: visible;  
+    /* opacity: 1; */
 }
 .block__popover .protyle-breadcrumb__item:not(:first-child),.block__popover .protyle-breadcrumb__arrow:not(:first-child){
     visibility: hidden;
+    /* opacity: 0; */
 }
 .block__popover .protyle-breadcrumb__item:first-child{
     font-weight: bold; /*文件名加粗*/
@@ -560,6 +671,7 @@ strong[style]{
 .protyle-wysiwyg u, .b3-typography u{
     text-decoration: none;
     border-bottom: 1px solid var(--b3-theme-on-background);
+    border-color: inherit;
 }
 
 
@@ -604,7 +716,10 @@ strong[style]{
 .protyle-wysiwyg [data-node-id][fold="1"]{
     height:  var(--allen-line-height);
 }
-
+/* 移除官方设定的padding-top */
+.protyle-wysiwyg [data-node-id][fold="1"] [data-node-id]{
+    padding-top: var(--allen-padding-top-bottom);
+}
 /*** 实验功能：调整段落块折叠时的样式 *****/
 .protyle-wysiwyg [data-type="NodeParagraph"][fold="1"]{
     padding-left: 18px;
@@ -647,13 +762,6 @@ strong[style]{
 .protyle-wysiwyg [data-type="NodeList"][fold="1"], .protyle-wysiwyg [data-type="NodeListItem"][fold="1"]{
     height: calc( var(--allen-line-height) + var(--allen-padding-top-bottom) * 2 ) !important; /* 调整高度使得折叠后垂直位置不会漂移 */
 }
-/* 折叠后消除下属 div 上下边距 */
-/* .protyle-wysiwyg [data-type="NodeList"][fold="1"] div, .protyle-wysiwyg [data-type="NodeListItem"][fold="1"] div{
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top:0;
-    padding-bottom: 0;
-} */
 
 /* 折叠状态下隐藏命名、别名、备注、引用数 */
 .protyle-wysiwyg [data-node-id][fold="1"] .protyle-attr{
@@ -689,8 +797,6 @@ strong[style]{
     border-radius: 0;
 }
 
-
-
 /****************** 三、文档排版 ***************************************/
 
 /* 通用设置 */
@@ -717,6 +823,16 @@ strong[style]{
     margin:4px;
 }
 /****** 实验功能结束 */
+
+/* 实验功能：颜色卡片增加padding */
+.sb div[data-node-id][style]{
+    padding: 8px 10px;
+}
+/* 嵌套内的颜色卡片恢复正常padding */
+.sb div[data-node-id][style] div[data-node-id][style] {
+    padding: var(--allen-block-padding);
+}
+/**** 实验功能结束 ***/
 
 /* 段落 p */
 .b3-typography p, .b3-typography [data-node-id], .protyle-wysiwyg p, .protyle-wysiwyg [data-node-id]{
@@ -830,7 +946,7 @@ strong[style]{
 }
 /*偶数行*/
 .b3-typography table tbody tr:nth-child(2n+1),.protyle-wysiwyg table tbody tr:nth-child(2n+1) {
-    background:var(--b3-theme-background);
+    background:var(--b3-theme-background) ;
 }
 
 /* 图片 */
@@ -868,8 +984,8 @@ strong[style]{
 
 
 /************************* 其他 **********************************************/
-
-/* 滚动条样式 */
+/****** 滚动条样式 *******/
+/* 通用滚动条 */
 ::-webkit-scrollbar {
     width : 8px;
     overflow-y: hidden;
@@ -881,7 +997,32 @@ strong[style]{
 ::-webkit-scrollbar-thumb:hover{
     background-color: #ccc;
 }
-/* 侧边栏滚动条 */
+
+/***********实验功能：开启左边栏背景色 ************************************
+
+.toolbar,#dockLeft, #dockRight, #dockTop, #dockBottom,.fn__flex-shrink{
+    background-color: var(--allen-theme-panl);
+    color: var(--allen-theme-on-panl);
+}
+.fn__flex-shrink .b3-list-item__text,.fn__flex-shrink .b3-list-item__graphic{
+    color: var(--allen-theme-on-panl);
+}
+.fn__flex-shrink div{
+    background: transparent;
+}
+.fn__flex-shrink .block__icons{
+    background-color: var(--allen-theme-panl);
+    color: var(--allen-theme-on-panl);
+}
+
 #layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar{
     width: 6px;
 }
+#layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar-thumb{
+    background-color:#454545;
+}
+#layouts > .fn__flex-1 > .fn__flex-column  ::-webkit-scrollbar-thumb:hover{
+    background-color: #666666;
+}
+
+/******* 开启左边栏背景色 代码结束 ************/
