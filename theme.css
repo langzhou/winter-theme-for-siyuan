@@ -518,10 +518,22 @@ span.counter:not(.popover__block){
 }
 
 /***** 块图标 ********/
+/* 调整块图标垂直位置偏移 */
 .protyle-gutters{
-    padding: 9px 0; /* 调整调整 padding 之后带来的块图标垂直位置偏移 */
+    padding: 0.625em 0; 
 }
-
+.protyle-gutters button[data-subtype="h1"] {
+    margin-top: 0.875em;
+}
+.protyle-gutters button[data-subtype="h2"] {
+    margin-top: 0.625em;
+}
+.protyle-gutters button[data-subtype="h3"] {
+    margin-top: 0.375em;
+}
+.protyle-gutters button[data-subtype="h4"] {
+    margin-top: 0.25em;
+}
 
 /* 减淡块图标颜色 */
 .protyle-gutters svg {
@@ -557,6 +569,14 @@ span.counter:not(.popover__block){
 
 
 /***** 大纲圆点 *******/
+/* 优化：v1.2 beta3+ 版本下段落距离圆点过远 */
+.protyle-wysiwyg [data-node-id].li>.protyle-action{
+    width: 16px;
+}
+.protyle-wysiwyg [data-node-id].li>[data-node-id]{
+    margin-left: 16px;
+}
+
 /* 设置圆点基础样式 */
 .protyle-wysiwyg [data-node-id].li>.protyle-action svg{
     width:12px;
@@ -592,8 +612,8 @@ span.counter:not(.popover__block){
 /***** 反链面板 *********/
 /* 反链高亮颜色 */
 .backlinkList .b3-list-item__text mark{
-    background-color: transparent;
-    color:var(--b3-protyle-inline-mark-background);
+    background-color: var(--b3-protyle-inline-mark-background);
+    color:var(--b3-theme-primary);
 }
 
 /* 面板搜索图标 */
@@ -685,7 +705,11 @@ strong[style]{
 .protyle-wysiwyg [data-node-id] span[data-type="block-ref"]:hover{
     background-color: var(--b3-theme-primary-lighter);
 }
-
+/* 颜色卡片内的块引用字体颜色与卡片保持一致 */
+.protyle-wysiwyg [style] span[data-type="block-ref"]{
+    color: inherit;
+    border-color: inherit;
+}
 
 /* 超级链接 */
 .b3-typography a,.protyle-wysiwyg [data-node-id] span[data-type="a"]{
@@ -755,7 +779,7 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
 /*** 实验功能：调整段落块折叠时的样式 *****/
 .protyle-wysiwyg [data-type="NodeParagraph"][fold="1"]{
     padding-left: 18px;
-    opacity: 1;
+    opacity: 1 ;
 }
 .protyle-wysiwyg [data-type="NodeParagraph"][fold="1"]:after{
     content: "";
